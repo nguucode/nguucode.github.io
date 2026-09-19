@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Ngưu Nguyễn — product designer. UI/UX, freelance." } = Astro.props;
+
+const site = "OnTheShore";
+const path = Astro.url.pathname;
+
+const nav = [
+  { href: "/cv/", label: "CV" },
+  { href: "/projects/", label: "Projects" },
+  { href: "/products/", label: "Products" },
+  { href: "/articles/", label: "Articles" },
+];
+
+const isCurrent = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {site}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} — ${site}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-head">
+        <a class="brand" href="/">Ngưu Nguyễn</a>
+        <nav>
+          {
+            nav.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-foot">
+        <span>Nha Trang, Việt Nam</span>
+        <a href="mailto:kafka@ontheshore.biz">kafka@ontheshore.biz</a>
+        <span style="margin-left:auto">© {new Date().getFullYear()}</span>
+      </footer>
+    </div>
+  </body>
+</html>

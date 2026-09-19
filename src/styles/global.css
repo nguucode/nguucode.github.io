@@ -1,0 +1,274 @@
+/* ontheshore.biz — deliberately plain.
+   One column, one accent, system fonts. Nothing to maintain later. */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #5c5c5c;
+  --ink-faint: #8a8a8a;
+  --rule: #e2e2e2;
+  --bg: #fdfdfc;
+  --accent: #1a1a1a;
+  --measure: 34rem;
+  --gap: 1.6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ececea;
+    --ink-soft: #a8a8a4;
+    --ink-faint: #767672;
+    --rule: #2e2e2c;
+    --bg: #131312;
+    --accent: #ececea;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.5rem 6rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.site-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1.1rem;
+  padding: 3.5rem 0 2.5rem;
+}
+
+.site-head a.brand {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-head nav {
+  display: flex;
+  gap: 1.1rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.site-head nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.site-head nav a:hover,
+.site-head nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- type ---------- */
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  margin: 0 0 0.4rem;
+}
+
+h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 2.6rem 0 0.8rem;
+}
+
+h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 1.8rem 0 0.4rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+.lede {
+  color: var(--ink-soft);
+  margin-bottom: 2.5rem;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.faint {
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 3rem 0;
+}
+
+/* ---------- lists of things ---------- */
+
+.entries {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entries li {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.entries li:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry-title {
+  display: block;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.entry-title:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.entry-meta {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin-top: 0.15rem;
+}
+
+.entry-note {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0.35rem 0 0;
+}
+
+/* ---------- CV rows ---------- */
+
+.row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.2rem 1.2rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.row:last-of-type {
+  border-bottom: 1px solid var(--rule);
+}
+
+.row .when {
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  padding-top: 0.15rem;
+}
+
+.row .what {
+  margin: 0;
+}
+
+.row .what .where {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 34rem) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .row .when {
+    order: 2;
+  }
+}
+
+/* ---------- placeholder / empty state ---------- */
+
+.empty {
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  padding: 1.4rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+/* ---------- footer ---------- */
+
+.site-foot {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+}
+
+.site-foot a {
+  color: var(--ink-soft);
+}
+
+/* ---------- prose (case studies, articles) ---------- */
+
+.prose h2 {
+  margin-top: 2.4rem;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--rule);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}

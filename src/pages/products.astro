@@ -1,0 +1,43 @@
+---
+import Base from "../layouts/Base.astro";
+
+/* Kiểm kê thật ở OTS-17. Khi có link thật thì điền vào đây.
+   Để mảng rỗng thì section tự hiện empty state, không hiện link chết. */
+type Item = { name: string; href: string; note?: string };
+
+const figmaTemplates: Item[] = [];
+const figmaPlugins: Item[] = [];
+const figmaSkills: Item[] = [];
+const groups = [
+  { heading: "Figma — Templates", items: figmaTemplates },
+  { heading: "Figma — Plugins", items: figmaPlugins },
+  { heading: "Figma — AI Skills", items: figmaSkills },
+];
+---
+
+<Base title="Products" description="Templates, plugins and skills published on Figma.">
+  <h1>Products</h1>
+  <p class="lede">Những thứ đã publish, dùng được ngay.</p>
+
+  {
+    groups.map((g) => (
+      <>
+        <h2>{g.heading}</h2>
+        {g.items.length === 0 ? (
+          <div class="empty">Chưa có gì publish ở mục này.</div>
+        ) : (
+          <ul class="entries">
+            {g.items.map((it) => (
+              <li>
+                <a class="entry-title" href={it.href} rel="noopener">
+                  {it.name}
+                </a>
+                {it.note && <p class="entry-note">{it.note}</p>}
+              </li>
+            ))}
+          </ul>
+        )}
+      </>
+    ))
+  }
+</Base>
