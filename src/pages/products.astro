@@ -43,7 +43,16 @@ const figmaSkills: Item[] = [
   },
 ];
 
+const openSource: Item[] = [
+  {
+    name: "Moonveil Icons",
+    href: "/moonveilicons/",
+    note: "Thư viện icon SVG mã nguồn mở, hai style outline và solid. Dùng qua npm, React, Vue, Web Component, webfont, CDN và CLI. Đang phát triển.",
+  },
+];
+
 const groups = [
+  { heading: "Open source", items: openSource },
   { heading: "Figma — Templates", items: figmaTemplates },
   { heading: "Figma — AI Skills", items: figmaSkills },
   { heading: "Figma — Plugins", items: figmaPlugins },
@@ -54,11 +63,11 @@ const totalPublished = groups.reduce((n, g) => n + g.items.length, 0);
 
 <Base
   title="Products"
-  description="Figma templates, plugins and AI skills published by Ngưu Nguyễn."
+  description="Figma templates, plugins, AI skills and open-source libraries published by Ngưu Nguyễn."
 >
   <h1>Products</h1>
   <p class="lede">
-    {totalPublished} thứ đã publish, dùng được ngay. Miễn phí trên Figma Community.
+    {totalPublished} thứ đã publish, dùng được ngay. Miễn phí.
   </p>
 
   {
